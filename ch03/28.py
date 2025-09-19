@@ -9,6 +9,19 @@ scores = dict()
 for i in range(10, 50):
     scores['S' + str(i)] = random.randrange(50, 100+1)
 print(scores)
+
 #40평의 학생의 평균 점수를 구하시오
 avg = sum(scores.values())/ len(scores)
 print(avg)
+
+# 최고 점수 찾기
+max_score = max(scores.values())
+
+# 최고 점수를 가진 학생들만 필터링
+candidates = [student for student, score in scores.items() if score == max_score]
+
+# 학번이 가장 빠른 학생 (문자열 비교 시 S11 < S12 < ...)
+best_student = min(candidates)
+
+print("최고 득점 학생:", best_student)
+print("점수:", max_score)
